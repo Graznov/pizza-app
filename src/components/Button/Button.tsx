@@ -3,10 +3,13 @@ import {ButtonProps} from "./Button.props.ts";
 import cn from 'classNames'
 
 
-function Button({ children, className, ...props }:ButtonProps) {
+function Button({ children, className, appearence = 'small', ...props }:ButtonProps) {
 
     return (
-        <button className={cn(styles['button'], styles['accent'], className)} {...props}>{children}</button>
+        <button className={cn(styles['button'], styles['accent'], className, {
+            [styles['small']] : appearence === 'small',
+            [styles['big']] : appearence === 'big'
+        })} {...props}>{children}</button>
     )
 }
 
